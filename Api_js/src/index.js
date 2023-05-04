@@ -1,17 +1,15 @@
-const { response } = require('express');
-const express = require('express');
+import express from "express";
+import { router } from "./config/routes";
 
-//Criando um servidor atraves do expess
 const app = express();
 
-//Configurando uma requisição com o metodo GET para a raiz da aplicação
-app.get("/", function(req, res){
-    console.log("Primeira requisição recebida!");
-    res.status(200).json({ message : "Resposta enviada em JSON"});
-});
+app.use(express.json());
+app.use(router);
 
-//O comando listen roda a aplicação
 app.listen(3000, function(){
     console.clear();
     console.log("Aplicação rodando na porta 3000");
-});
+});    
+
+//Implementar as funcionalidades no vetor de busca, alteração e remoção
+//Implementar o banco na aplicação (Prisma)
